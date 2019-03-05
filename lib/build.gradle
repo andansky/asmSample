@@ -1,0 +1,58 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src/main/groovy'
+        }
+
+        java {
+            srcDir "src/main/java"
+        }
+
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+//    implementation 'com.android.tools.build:gradle:3.3.1'
+//    implementation 'com.android.tools.build:gradle-api:3.3.1'
+//    implementation 'commons-io:commons-io:2.6'
+//    implementation 'commons-codec:commons-codec:1.10'
+    //noinspection GradleDependency
+//    implementation 'org.ow2.asm:asm:5.1'
+//    //noinspection GradleDependency
+//    implementation 'org.ow2.asm:asm-util:5.1'
+//    //noinspection GradleDependency
+//    implementation 'org.ow2.asm:asm-commons:5.1'
+    implementation 'com.quinn.hunter:hunter-transform:0.9.0'
+
+}
+
+
+repositories {
+    mavenCentral()
+}
+//以上都为固定写法
+
+//group和version
+group='com.andan.plugin'
+version='1.1.5'
+
+//打包到本地或者远程Maven库
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址设置为E:/Maven
+            repository(url: uri('E:/repo'))
+        }
+    }
+}
