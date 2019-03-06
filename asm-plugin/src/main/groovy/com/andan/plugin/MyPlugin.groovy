@@ -9,7 +9,13 @@ class MyPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
+        println("start plugin-------------------------------------------")
         AppExtension appExtension = (AppExtension)project.getProperties().get("android")
-        appExtension.registerTransform(new MyTransform())
+        if(appExtension==null){
+            println("plugin is null")
+        }else{
+            println("plugin is not null")
+            appExtension.registerTransform(new MyTransform())
+        }
     }
 }

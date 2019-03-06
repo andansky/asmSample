@@ -29,7 +29,7 @@ public class TracdMethod extends AdviceAdapter {
         mv.visitVarInsn(LLOAD,timeLocalIndex);
         mv.visitInsn(LSUB);
         mv.visitVarInsn(LSTORE,timeLocalIndex);
-        mv.visitLdcInsn(pathName);//这个是不是传参数的意思
+        mv.visitLdcInsn(pathName);
         mv.visitVarInsn(LLOAD,timeLocalIndex);
         mv.visitMethodInsn(INVOKESTATIC, "android/util/Log", "d", "(Ljava/lang/String;Ljava/lang/String;)I", false);
         mv.visitInsn(Opcodes.POP);
